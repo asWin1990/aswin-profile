@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aswin Sanjeevaghosh - Professional Profile</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles to override or enhance Tailwind */
+        body {
+            font-family: "Inter", sans-serif;
+            line-height: 1.6;
+            background-image: url('https://content-fetcher.sandbox.google.com/files/uploaded:Picture1.jpg-72e0a44e-546b-4975-a9a6-62a74ccdb2d3');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            min-height: 100vh; /* Ensure body takes full viewport height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px; /* Add some padding around the main content */
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent white background */
+            max-width: 1000px; /* Increased max-width for better content display */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border-radius: 12px;
+            overflow: hidden; /* Ensures rounded corners apply to content */
+            width: 100%; /* Take full width on smaller screens */
+        }
+        .tab-button.active {
+            background-color: #3b82f6; /* Blue for active tab */
+            color: white;
+            font-weight: 600;
+        }
+        .tab-content {
+            display: none; /* Hidden by default */
+        }
+        .tab-content.active {
+            display: block; /* Show active tab content */
+        }
+        h1, h2, h3, h4 {
+            color: #1a56db; /* A slightly darker blue for headings */
+        }
+
+        /* Responsive adjustments for background image */
+        @media (max-width: 768px) {
+            body {
+                background-attachment: scroll; /* Change to scroll for better mobile performance */
+                padding: 10px; /* Reduce padding on smaller screens */
+            }
+            .container {
+                padding: 15px; /* Adjust container padding for smaller screens */
+            }
+            .tab-button {
+                padding: 8px 12px; /* Smaller padding for tab buttons on mobile */
+                font-size: 0.9em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 5px; /* Even less padding on very small screens */
+            }
+            .container {
+                padding: 10px; /* Even less container padding */
+            }
+            .tab-button {
+                padding: 6px 10px; /* Even smaller padding for tab buttons */
+                font-size: 0.8em;
+            }
+            .tab-buttons {
+                flex-wrap: wrap; /* Allow tab buttons to wrap on very small screens */
+                justify-content: center;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background-image: none;
+                background-color: #fff;
+                padding: 0;
+                margin: 0;
+                display: block;
+            }
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+                background-color: transparent;
+                max-width: none;
+                width: auto;
+                padding: 0;
+            }
+            /* Hide UI elements not meant for print */
+            .tab-buttons, .view-cv-button, .back-button, .download-button {
+                display: none !important;
+            }
+            /* Show all content when printing */
+            .tab-content {
+                display: block !important;
+                border-top: none; /* Remove border between sections for print */
+            }
+            #mainProfile {
+                display: none !important; /* Hide main profile when printing CV */
+            }
+            #shortCVPage {
+                display: block !important; /* Show CV page when printing CV */
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body class="selection:bg-blue-200 selection:text-blue-900">
+    <div id="mainProfile" class="container">
+        <h1 class="text-3xl lg:text-4xl font-bold text-center py-6">Aswin Sanjeevaghosh's Professional Profile</h1>
+
+        <div class="flex justify-center mb-6">
+            <button onclick="showShortCV()" class="view-cv-button px-6 py-3 bg-green-600 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 transition duration-300 ease-in-out">
+                View My CV
+            </button>
+        </div>
+
+        <!-- Tab Buttons -->
+        <div class="tab-buttons flex flex-wrap justify-center bg-gray-100 p-2 rounded-t-lg border-b border-gray-200">
+            <button class="tab-button px-4 py-2 rounded-md mx-1 my-1 text-gray-700 hover:bg-gray-200 focus:outline-none transition-colors duration-200" onclick="openTab('snapshot', this)">
+                Professional Snapshot
+            </button>
+            <button class="tab-button px-4 py-2 rounded-md mx-1 my-1 text-gray-700 hover:bg-gray-200 focus:outline-none transition-colors duration-200" onclick="openTab('career-journey', this)">
+                Career Journey
+            </button>
+            <button class="tab-button px-4 py-2 rounded-md mx-1 my-1 text-gray-700 hover:bg-gray-200 focus:outline-none transition-colors duration-200" onclick="openTab('detailed-experience', this)">
+                Detailed Experience
+            </button>
+            <button class="tab-button px-4 py-2 rounded-md mx-1 my-1 text-gray-700 hover:bg-gray-200 focus:outline-none transition-colors duration-200" onclick="openTab('projects', this)">
+                Project Highlights
+            </button>
+            <button class="tab-button px-4 py-2 rounded-md mx-1 my-1 text-gray-700 hover:bg-gray-200 focus:outline-none transition-colors duration-200" onclick="openTab('competencies', this)">
+                Competencies & Tech
+            </button>
+            <button class="tab-button px-4 py-2 rounded-md mx-1 my-1 text-gray-700 hover:bg-gray-200 focus:outline-none transition-colors duration-200" onclick="openTab('education', this)">
+                Education & Dev
+            </button>
+            <button class="tab-button px-4 py-2 rounded-md mx-1 my-1 text-gray-700 hover:bg-gray-200 focus:outline-none transition-colors duration-200" onclick="openTab('trajectory', this)">
+                Strategic Trajectory
+            </button>
+            <button class="tab-button px-4 py-2 rounded-md mx-1 my-1 text-gray-700 hover:bg-gray-200 focus:outline-none transition-colors duration-200" onclick="openTab('conclusion', this)">
+                Conclusion
+            </button>
+        </div>
+
+        <!-- Tab Content -->
+        <div id="tab-content-area" class="p-6">
+            <div id="snapshot" class="tab-content active">
+                <h2 class="text-2xl font-semibold mb-4">Professional Snapshot: The Overview</h2>
+                <h3 class="text-xl font-medium mb-2 text-gray-700">Executive Summary</h3>
+                <p class="mb-4 text-gray-700">An experienced financial professional with five years of dedicated experience within the dynamic Luxembourg fund industry, specializing in critical areas such as regulatory compliance, meticulous due diligence, and robust oversight of delegated investment managers. Career is marked by a proven ability to implement sophisticated governance frameworks, diligently monitor fund performance, and ensure strict alignment with prevailing CSSF regulations, notably Circular 18/698. This specialization in Luxembourg's fund industry, particularly in compliance and oversight of delegated entities, addresses a significant operational and regulatory demand for Management Companies (ManCos) and Alternative Investment Fund Managers (AIFMs). Luxembourg, as a global fund hub, operates within a complex regulatory landscape, making this focused expertise highly relevant and sought after.</p>
+                <p class="mb-4 text-gray-700">Professional background is further strengthened by a profound understanding of the UCITS/AIF fund industry, EMIR regulations, and private assets. This comprehensive knowledge extends beyond theoretical understanding; it involves actively shaping and overseeing operational processes to ensure adherence, indicating a proactive rather than reactive approach to regulatory demands. Such a track record suggests that contributions directly enhance operational excellence and risk mitigation, thereby bolstering the stability and reputation of the organizations served. Capabilities extend beyond mere compliance checking, positioning as a strategic partner who enables robust, compliant operations. Furthermore, excellent communication skills and cross-functional approach thrive in multicultural environments, facilitating seamless collaboration across diverse teams.</p>
+
+                <h3 class="text-xl font-medium mb-2 text-gray-700">Key Strengths at a Glance</h3>
+                <ul class="list-disc list-inside space-y-2 mb-6 text-gray-700">
+                    <li><strong>Regulatory Compliance & Oversight:</strong> Proven track record in implementing governance frameworks, meticulously monitoring fund performance, and ensuring stringent alignment with critical CSSF regulations, including Circular 18/698.</li>
+                    <li><strong>Project Leadership & Digital Transformation:</strong> Led cross-functional teams to develop and launch a pre-production prototype for a discretionary fund selection platform two months ahead of schedule.</li>
+                    <li><strong>Due Diligence & Risk Management:</strong> Expertise includes conducting initial and ongoing due diligence on delegated entities for AIFMs, adhering strictly to CSSF 18/698, AIFMD, and CDR 231/2013.</li>
+                    <li><strong>Client & Stakeholder Engagement:</strong> Demonstrated ability to build and manage relationships with a diverse range of stakeholders, including regional brokers, banks, IFAs, High Net Worth Individuals (HNIs), and direct institutional clients.</li>
+                    <li><strong>Data & Reporting Automation:</strong> Designed and implemented an automated matching solution, coupled with rigorous manual data cleansing, which resulted in a robust, hybrid reporting tool. This innovation directly improved the reliability and timeliness of mandatory CSSF year-end filings and SAQ submissions.</li>
+                </ul>
+
+                <h3 class="text-xl font-medium mb-2 text-gray-700">Contact & Connect</h3>
+                <div class="contact-info bg-blue-50 p-4 rounded-lg shadow-sm text-gray-800">
+                    <p class="mb-1"><strong>Name:</strong> Aswin Sanjeevaghosh</p>
+                    <p class="mb-1"><strong>Address:</strong> 64, Rue de Bourgogne, Luxembourg city, L-1272</p>
+                    <p class="mb-1"><strong>Contact:</strong> +33 767 789 128 | <a href="mailto:aswin.sanjeeva@gmail.com" class="text-blue-600 hover:underline">aswin.sanjeeva@gmail.com</a></p>
+                    <p class="mb-1"><strong>Work Authorization:</strong> Valid Luxembourg work permit for all sectors and jobs</p>
+                    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/aswinsanjeeva/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">https://www.linkedin.com/in/aswinsanjeeva/</a></p>
+                </div>
+
+                <h3 class="text-xl font-medium mb-2 mt-6 text-gray-700">Core Competencies Summary Table</h3>
+                <div class="overflow-x-auto rounded-lg shadow-md">
+                    <table class="min-w-full bg-white border-collapse">
+                        <thead class="bg-blue-100">
+                            <tr>
+                                <th class="py-3 px-4 border-b border-gray-300 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">Competency Area</th>
+                                <th class="py-3 px-4 border-b border-gray-300 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">Key Impact / Value Proposition</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="hover:bg-gray-50 transition-colors duration-150">
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Regulatory Compliance & Oversight</td>
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Ensures adherence to complex EU fund regulations (CSSF 18/698, AIFMD, EMIR, SFTR, ESG-SFDR), mitigating risk and enhancing governance.</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 transition-colors duration-150">
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Investment & Fund Management</td>
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Expertise in due diligence, fund performance, investment compliance, and document review across liquid and alternative assets.</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 transition-colors duration-150">
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Project & Process Management</td>
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Drives digital transformation and operational efficiency, delivering complex projects ahead of schedule and optimizing workflows.</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 transition-colors duration-150">
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Client Relationship & Distribution</td>
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Builds and manages high-value client portfolios, expands distribution networks, and enhances market penetration through strategic engagement.</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 transition-colors duration-150">
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Data & Technology Acumen</td>
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Leverages advanced tools (Bloomberg, Power BI, SQL, automation) for robust reporting, data quality, and analytical insights.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="career-journey" class="tab-content">
+                <h2 class="text-2xl font-semibold mb-4">Career Journey: Overview & Progression</h2>
+                <h3 class="text-xl font-medium mb-2 text-gray-700">Professional Experience Timeline</h3>
+                <p class="mb-6 text-gray-700">Career trajectory demonstrates a consistent progression and increasing responsibility across diverse financial domains, culminating in specialized roles within the Luxembourg fund industry. Journey reflects a strong learning agility and a proven capacity to adapt to new markets, functional areas, and increasingly complex, strategic responsibilities. This adaptability is particularly evident in the transition from client-facing roles in India to project management and then to compliance and oversight positions in Luxembourg. This broad exposure across retail/private banking, mutual funds distribution, wealth tech project management, and highly specific fund oversight and regulatory compliance is uncommon. It suggests a comprehensive understanding of the financial ecosystem from multiple angles—product development, distribution, client management, and regulatory control—and experience at various points of the value chain. This versatility implies an ability to understand the interdependencies between different functions within a financial institution, enabling contributions to holistic solutions and strategic initiatives.</p>
+
+                <div class="space-y-6">
+                    <div class="experience-item bg-gray-50 p-4 rounded-lg shadow-sm border border-gray-200">
+                        <h4 class="text-lg font-semibold text-gray-800">Delegate Risk Oversight – Senior Associate | Waystone Management Company Luxembourg | Aug 2023 – Dec 2023</h4>
+                        <ul class="list-disc list-inside mt-2 text-gray-700">
+                            <li>Conducted initial and ongoing due diligence of delegated entities to the AIFM as per CSSF 18/698, AIFMD & CDR 231/2013.</li>
+                            <li>Served as a voting member in the portfolio management committee for pre-trade compliance and asset eligibility testing.</li>
+                            <li>Cleared a backlog of ongoing due diligences, reducing overall risk levels for the ManCo's delegates.</li>
+                            <li>Improved follow-up methods by implementing a gap analysis, expediting onboarding processes.</li>
+                        </ul>
+                    </div>
+                    <div class="experience-item bg-gray-50 p-4 rounded-lg shadow-sm border border-gray-200">
+                        <h4 class="text-lg font-semibold text-gray-800">Investment Management Oversight Manager | FundRock Management Company Luxembourg | May 2022 – July 2023</h4>
+                        <ul class="list-disc list-inside mt-2 text-gray-700">
+                            <li>Performed due diligence risk assessments on UCITS/alternative investment managers/advisors as per CSSF 18/698 and CP89 Consultation.</li>
+                            <li>Conducted thematic reviews on topics such as best execution, AML on Assets, SFDR/ESG frameworks, and Liquidity & Risk Management.</li>
+                            <li>Expedited client onboarding timelines through cross-collaboration with legal and risk management teams.</li>
+                            <li>Updated a legacy dashboard to a new version, centralizing oversight aspects of existing delegates.</li>
+                        </ul>
+                    </div>
+                    <div class="experience-item bg-gray-50 p-4 rounded-lg shadow-sm border border-gray-200">
+                        <h4 class="text-lg font-semibold text-gray-800">Funds Oversight Officer | Alter Domus Alternative Fund Administration Services Luxembourg | Sep 2021 – Feb 2022</h4>
+                        <ul class="list-disc list-inside mt-2 text-gray-700">
+                            <li>Conducted thorough pre- and post-NAV release reviews of fund financial packages, acting as a last line of defense.</li>
+                            <li>Verified accuracy of complex calculations and reconciled critical data points across various entities.</li>
+                            <li>Identified and prevented material NAV errors, safeguarding AUA data and preventing potential client financial loss.</li>
+                            <li>Addressed operational hurdles by consolidating fragmented data and implementing an automated matching solution for CSSF filings.</li>
+                        </ul>
+                    </div>
+                    <div class="experience-item bg-gray-50 p-4 rounded-lg shadow-sm border border-gray-200">
+                        <h4 class="text-lg font-semibold text-gray-800">Project Manager | Trust Consult Group S.A Luxembourg | Jun 2019 – Sep 2021</h4>
+                        <ul class="list-disc list-inside mt-2 text-gray-700">
+                            <li>Spearheaded the design and execution of a discretionary fund selection web application for family offices.</li>
+                            <li>Managed distributed teams and global stakeholders for Business Requirements Analysis (BRA), prototyping, and pre-production deployment.</li>
+                            <li>Launched a pre-production prototype two months ahead of schedule, featuring integrated data and real-time portfolio analytics.</li>
+                            <li>Reduced project task latency by 30% through the implementation of JIRA/Trello workflows and dynamic Gantt charts.</li>
+                        </ul>
+                    </div>
+                    <div class="experience-item bg-gray-50 p-4 rounded-lg shadow-sm border border-gray-200">
+                        <h4 class="text-lg font-semibold text-gray-800">Business Product Management Assistant (Internship) | REGIS-TR, Clearstream Luxembourg | Nov 2018 – Apr 2019</h4>
+                        <ul class="list-disc list-inside mt-2 text-gray-700">
+                            <li>Streamlined the product change control board by introducing sequential follow-up methods, reducing implementation delays.</li>
+                            <li>Supported National Competent Authority (NCA) portal access management, ensuring real-time audit trails for regulators.</li>
+                            <li>Executed over 30 EMIR/SFTR/FinfraG reporting updates for Europe’s leading trade repository.</li>
+                            <li>Spearheaded post-Brexit entity onboarding by reverse-engineering expired KYC data from legacy systems.</li>
+                        </ul>
+                    </div>
+                    <div class="experience-item bg-gray-50 p-4 rounded-lg shadow-sm border border-gray-200">
+                        <h4 class="text-lg font-semibold text-gray-800">Senior Relationship Manager | Nippon India Mutual Funds, Thiruvananthapuram | Mar 2015 – Aug 2017</h4>
+                        <ul class="list-disc list-inside mt-2 text-gray-700">
+                            <li>Oversaw all business and sales operations for the Thiruvananthapuram branch and managed non-prime branches, effectively acting as cluster manager.</li>
+                            <li>Built and managed relationships with regional brokers, banks, IFAs, HNIs, and direct institutional clients.</li>
+                            <li>Elevated Thiruvananthapuram to one of the best-performing branches nationally among non-metro cities.</li>
+                            <li>Led the pilot and national rollout of the company’s proprietary digital investment platform, achieving high digital activation rates.</li>
+                        </ul>
+                    </div>
+                    <div class="experience-item bg-gray-50 p-4 rounded-lg shadow-sm border border-gray-200">
+                        <h4 class="text-lg font-semibold text-gray-800">Private Banking Relationship Manager | Allegro Capital Advisors, Bengaluru | Jan 2011 – Nov 2012</h4>
+                        <ul class="list-disc list-inside mt-2 text-gray-700">
+                            <li>Managed a portfolio of Non-Resident Indian (NRI) High Net Worth Individuals (HNIs), delivering bespoke investment solutions across a broad spectrum of products. These included structured products, in-house PMS, mutual funds, direct equities, corporate fixed deposits, life insurance, and select international strategies such as private equity (PE), Real Estate Investment Trusts (REITs), and electronically traded hedge funds.</li>
+                            <li>Conducted comprehensive financial needs analysis and tailored asset allocation strategies to optimize risk-adjusted returns and maintain high Internal Rates of Return (IRR) for client portfolios.</li>
+                            <li>Duties involved executing end-to-end client servicing, including subscription/redemption processes, AML/KYC completion, nominee changes, and information updates, ensuring a seamless private banking experience.</li>
+                            <li>Facilitated investment solutions and supported clients in accessing global markets, coordinating with legal and compliance teams for regulatory adherence and tax advice.</li>
+                            <li>Built strong client relationships through regular in-person meetings, proactive portfolio reviews, and high-touch engagement, which resulted in significant client retention and referral business.</li>
+                            <li>Also acted as a facilitator for clients’ broader financial needs, collaborating with external partners for real estate, tax, and estate planning services.</li>
+                            <li>Maintained full compliance with IRDA and AMFI regulations, ensuring all advisory and sales activities met industry standards.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 class="text-xl font-medium mb-2 mt-6 text-gray-700">Career Progression Table</h3>
+                <div class="overflow-x-auto rounded-lg shadow-md">
+                    <table class="min-w-full bg-white border-collapse">
+                        <thead class="bg-blue-100">
+                            <tr>
+                                <th class="py-3 px-4 border-b border-gray-300 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">Company</th>
+                                <th class="py-3 px-4 border-b border-gray-300 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">Role</th>
+                                <th class="py-3 px-4 border-b border-gray-300 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">Duration</th>
+                                <th class="py-3 px-4 border-b border-gray-300 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">Key Focus Area</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="hover:bg-gray-50 transition-colors duration-150">
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Waystone Management Company Luxembourg</td>
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Delegate Risk Oversight – Senior Associate</td>
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Aug 2023 – Dec 2023 (5 months)</td>
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Regulatory Due Diligence & Risk Mitigation</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 transition-colors duration-150">
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">FundRock Management Company Luxembourg</td>
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Investment Management Oversight Manager</td>
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">May 2022 – July 2023 (1 year 3 months)</td>
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Investment & Regulatory Oversight, ESG, Reporting</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 transition-colors duration-150">
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Alter Domus Alternative Fund Administration Services Luxembourg</td>
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Funds Oversight Officer</td>
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Sep 2021 – Feb 2022 (6 months)</td>
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">NAV Oversight, Data Quality & CSSF Filings</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 transition-colors duration-150">
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Trust Consult Group S.A Luxembourg</td>
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Project Manager</td>
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Jun 2019 – Sep 2021 (2 years 4 months)</td>
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Digital Wealth Platform Development</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 transition-colors duration-150">
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">REGIS-TR, Clearstream Luxembourg</td>
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Business Product Management Assistant (Internship)</td>
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Nov 2018 – Apr 2019 (6 months)</td>
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Regulatory Reporting & Change Management</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 transition-colors duration-150">
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Nippon India Mutual Funds, Thiruvananthapuram</td>
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Senior Relationship Manager</td>
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Mar 2015 – Aug 2017 (2 years 6 months)</td>
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Sales, Distribution & Digital Adoption (India)</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 transition-colors duration-150">
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Allegro Capital Advisors, Bengaluru</td>
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Private Banking Relationship Manager</td>
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Jan 2011 – Nov 2012 (1 year 11 months)</td>
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">HNI Client Management & Financial Advisory (India)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="detailed-experience" class="tab-content">
+                <h2 class="text-2xl font-semibold mb-4">Deep Dive: Detailed Professional Experience</h2>
+                <p class="mb-6 text-gray-700">This section provides an in-depth look into each professional role, detailing responsibilities, quantifying achievements, and listing the specific skills and tools utilized. This granular perspective allows for a thorough understanding of contributions and capabilities in various capacities within the financial sector.</p>
+
+                <div class="space-y-8">
+                    <div class="detailed-exp-item bg-gray-50 p-6 rounded-lg shadow border border-gray-200">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Role-Specific Details: Delegate Risk Oversight – Senior Associate</h3>
+                        <h4 class="text-lg font-medium text-gray-700 mb-3">Waystone Management Company Luxembourg | Aug 2023 – Dec 2023</h4>
+                        <p class="mb-4 text-gray-700">In this role, was instrumental in ensuring the rigorous oversight of delegated entities, a critical function within the AIFM framework. Responsibilities included conducting initial and ongoing due diligence of delegated entities as per CSSF 18/698, AIFMD & CDR 231/2013. Actively contributed to the enhancement of due diligence questionnaires for various entities, including Investment Managers/Advisors, Fund Administrators, Depositary/custodians, and Distributors, thereby enabling thorough oversight and enhanced due diligence for complex relationships. Furthermore, served as a voting member in the portfolio management committee, a key requirement for pre-trade compliance and asset eligibility testing, ensuring alignment with fund mandates, objectives, and policies.</p>
+                        <p class="mb-4 text-gray-700">Despite a relatively short tenure in this role, demonstrated immediate impact. Successfully completed a backlog of ongoing due diligences, effectively closing out outstanding follow-ups and updating the Management Information System (MIS) for 2023, which significantly reduced the overall risk levels of the delegates to the ManCo. This ability to quickly address critical operational challenges and deliver tangible value in a short timeframe highlights a proactive and results-oriented approach. Also improved follow-up methods by implementing a gap analysis on existing processes, which streamlined the feedback process timeline and helped the onboarding team expedite their operations. A significant contribution involved providing feedback on the policies and procedures of non-EU asset managers to better meet the requirements for EU delegation arrangements. This goes beyond mere compliance checking, showcasing a deep understanding of the regulatory intent and the ability to proactively guide external entities to adapt their frameworks, a critical skill for facilitating cross-border regulatory alignment in Luxembourg.</p>
+                        <p class="font-semibold text-gray-800">Skills & Tools Utilized:</p>
+                        <p class="text-gray-700">Due diligence platforms (UME) for distributor activity and KPI collections, AML tools for daily screening (World-Check integrated into an in-house platform), internal SharePoint tool for cross-functional collaboration and approval of reviews, and MS Office advanced and Power BI for reporting visualizations.</p>
+                    </div>
+
+                    <div class="detailed-exp-item bg-gray-50 p-6 rounded-lg shadow border border-gray-200">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Role-Specific Details: Investment Management Oversight Manager</h3>
+                        <h4 class="text-lg font-medium text-gray-700 mb-3">FundRock Management Company Luxembourg | May 2022 – July 2023</h4>
+                        <p class="mb-4 text-gray-700">As an Investment Management Oversight Manager, held a pivotal role in ensuring regulatory adherence and robust oversight within the fund management landscape. Responsibilities encompassed conducting due diligence risk assessments on UCITS/alternative investment managers/advisors in accordance with CSSF 18/698 and CP89 Consultation on Fund Management Companies. This involved verifying substance requirements such as Organization and Governance, Core functions and oversight, Compliance, Operational risk management, Conflict of interest, and AML/CTF, among others. Conducted thematic reviews on crucial topics including best execution, AML on Assets, SFDR/ESG frameworks, and Liquidity & Risk Management. This wide array of regulations and critical policies demonstrates a broad and deep understanding of the regulatory landscape governing fund management companies in Luxembourg, with thematic reviews indicating a proactive approach to identifying and addressing specific risk areas.</p>
+                        <p class="mb-4 text-gray-700">Was also responsible for creating dynamic dashboards for daily reporting to Conducting Officers, tracking the department's weekly progress. Performed EMIR & SFTR trade reporting oversight using a specialized proprietary tool, which aided in identifying breaks and remediating derivative settlements. Duties extended to reviewing various legal documents, such as ManCo reports, SLAs, PPMs, and other fund documents, ensuring alignment with regulations like MiFID, BMR, and prospectus regulation. A key area of focus was ESG-SFDR checks on funds, classifying them as Article 6/8/9 (light green or dark green) based on fund literature and aligning policies/procedural documents and reporting. Direct involvement in classifying funds and reviewing frameworks highlights hands-on expertise in a highly specialized and sought-after domain, positioning as well-versed in the practical application of ESG regulations. Participated in PRIIPS-KIID production, overseeing external producers and advising on pre-production wording for investor suitability. Additionally, reviewed critical policies/procedures, including liquidity risk management, pre-trade compliance & risk, remuneration, Outsourcing, BCP/DRP, Complaints handling, and investor protection.</p>
+                        <p class="mb-4 text-gray-700">Achievements in this role include achieving quicker timelines for onboarding new clients, particularly non-complex ones, through timely feedback loops and cross-collaboration with legal, risk management, and delegated functions overseas. Significantly updated a legacy dashboard to a new version from scratch, comprehensively capturing all aspects of oversight for existing delegates into a central file, integrating initial and ongoing due diligence, KPI logs, operational logs, thematic reviews, and client coordination. These achievements demonstrate strong capabilities in data management, reporting, and operational improvement, showing a strategic mindset towards data utility and efficiency. Completed pre-trade checks on securitized products, creating reports and due diligence evidence for investment compliance. Also computed yearly EMIR/SFTR threshold breach calculations for OTC derivatives, notifying compliance and reporting to ESMA. Implemented monthly reporting using an enhanced model for capturing trade reporting breaks as per the ESMA validation pack, investment compliance breaches, and other regulatory breaches.</p>
+                        <p class="font-semibold text-gray-800">Skills & Tools Utilized:</p>
+                        <p class="text-gray-700">Bloomberg terminal for real-time reporting and data validation, MSCI ESG manager for post-trade ESG checks, Zeidler due diligence platform and AI applications for secured information exchange, review of best execution platforms (Charles Rivers, Bloomberg SSEOMS, Murex), Bloomberg BTCA for transaction cost analysis, and Linedata for investment compliance checks.</p>
+                    </div>
+
+                    <div class="detailed-exp-item bg-gray-50 p-6 rounded-lg shadow border border-gray-200">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Role-Specific Details: Funds Oversight Officer</h3>
+                        <h4 class="text-lg font-medium text-gray-700 mb-3">Alter Domus Alternative Fund Administration Services Luxembourg | Sep 2021 – Feb 2022</h4>
+                        <p class="mb-4 text-gray-700">In capacity as a Funds Oversight Officer, served as a crucial "last line of defense," meticulously reviewing fund financial packages both pre- and post-NAV release. These packages included NAV packs, investor statements, capital account statements, and financial statements prepared by the designated Center of Excellence (COE). A core responsibility involved verifying the accuracy of complex calculations such as income allocations, expense accruals/allocations, management/performance fees, carried interest, waterfalls, foreign exchange, and security valuations. This required reconciling critical data points across various entities, including fund administrators, custodians, prime brokers, and investment managers. Was also tasked with documenting control testing results, identifying any control gaps or weaknesses, and escalating findings with actionable recommendations for remediation, which were then tracked and validated. Furthermore, monitored key risk indicators (KRIs) and reported on the overall risk profile of assigned funds and relationships.</p>
+                        <p class="mb-4 text-gray-700">Impact in this role was significant, particularly in critical risk mitigation and data integrity. Successfully identified and prevented material NAV errors prior to release through rigorous review processes, thereby safeguarding substantial Assets Under Administration (AUA) data and averting potential client financial loss and reputational damage. This demonstrates a keen eye for detail and a strong commitment to financial accuracy. Also addressed a critical operational hurdle by consolidating fragmented, unstructured data from multiple sources. This involved designing and implementing an automated matching solution alongside rigorous manual data cleansing, which resolved inconsistencies and uncovered key data gaps. This project significantly elevated data quality controls and delivered a robust, hybrid (automated/manual) reporting tool that directly improved the reliability and timeliness of mandatory CSSF year-end filings and SAQ submissions. This operational transformation through data automation highlights the ability to turn complex data challenges into streamlined, compliant processes.</p>
+                        <p class="font-semibold text-gray-800">Skills & Tools Utilized:</p>
+                        <p class="text-gray-700">eFront (private) and Yardi (real estate) for reviewing NAV packs (especially Trial Balance and General Ledger), eCDF Portal, LBR, and World-Check for gathering checklist information, Lotus Notes for internal 4/6 eye reviews (creator-reviewer-approver model), and Power Query application with advanced Excel models for data projects.</p>
+                    </div>
+
+                    <div class="detailed-exp-item bg-gray-50 p-6 rounded-lg shadow border border-gray-200">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Role-Specific Details: Project Manager</h3>
+                        <h4 class="text-lg font-medium text-gray-700 mb-3">Trust Consult Group S.A Luxembourg | Jun 2019 – Sep 2021</h4>
+                        <p class="mb-4 text-gray-700">As a Project Manager, spearheaded the design and execution of a discretionary fund selection web application, a key initiative aimed at enabling family offices to dynamically assess and select optimal investment portfolios based on performance analytics. Responsibilities included developing comprehensive business plans, pitchbooks, and technical requirements for the platform, ensuring alignment of discretionary wealth management initiatives with regulatory standards such as MiFID II and the firm-wide strategic objectives. Managed distributed teams across Geneva (legal, DevOps) and global stakeholders for Business Requirements Analysis (BRA), prototype development, and deployment of a pre-production environment. A critical aspect of the role was engineering the proof-of-concept (POC) by integrating third-party data analytics tools like Morningstar Direct and FE Fundinfo, which validated fund performance models and ensured data-driven decision capabilities. Also collaborated with TCG’s group executives to orchestrate roadshows, client events, and demonstrations, driving adoption and securing stakeholder buy-in for the platform.</p>
+                        <p class="mb-4 text-gray-700">Leadership in this role resulted in significant achievements in end-to-end digital product delivery and efficiency in project execution. Led cross-functional teams (legal, DevOps, UX) to develop and launch a pre-production prototype for the discretionary fund selection platform two months ahead of schedule. This prototype featured Morningstar/FE Fundinfo API-based data integration, an intuitive UI/UX, and real-time portfolio analytics, all validated by client feedback. This demonstrates the ability to deliver complex digital solutions effectively and ahead of aggressive timelines. Also notably reduced project task latency by 30% through the implementation of JIRA/Trello workflows, dynamic Gantt charts, and granular Work Breakdown Structures (WBS) for real-time reporting to group executives. Furthermore, managed global team members via Slack to accelerate the transition from Business Requirements Document (BRD) to Functional Specification Document (FSD), UX/UI design thinking, user case development, and prototype creation.</p>
+                        <p class="font-semibold text-gray-800">Skills & Tools Utilized:</p>
+                        <p class="text-gray-700">Excel-based Gantt charts (learned through external training), WBS, and decentralized project tracking workbooks, Trello, Slack, and Google Workspace for project management tasks, Morningstar Direct, Lipper Investment Manager, Bloomberg funds data, and FE Analytics platforms for fund screening, performance attribution, risk analysis, benchmarking, and ESG scoring, and Figma/Adobe XD for developing low-fidelity wireframes and high-fidelity interactive prototypes.</p>
+                    </div>
+
+                    <div class="detailed-exp-item bg-gray-50 p-6 rounded-lg shadow border border-gray-200">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Role-Specific Details: Business Product Management Assistant (Internship)</h3>
+                        <h4 class="text-lg font-medium text-gray-700 mb-3">REGIS-TR, Clearstream Luxembourg | Nov 2018 – Apr 2019</h4>
+                        <p class="mb-4 text-gray-700">In internship role, contributed to streamlining critical operational processes within REGIS-TR, Clearstream. Enhanced the product change control board by introducing sequential follow-up methods, which effectively reduced implementation delays and increased transparency across cross-functional teams. Provided crucial support for National Competent Authority (NCA) portal access management, ensuring real-time audit trails for regulators. Additionally, managed global settlement workflows, digital meeting rooms, and executive calendars for C-suite using Clearstream’s proprietary tools.</p>
+                        <p class="mb-4 text-gray-700">Achievements in this role highlight capacity for process optimization and critical data management. Successfully executed over 30 EMIR/SFTR/FinfraG reporting updates for Europe’s leading ESMA-approved trade repository, managing change control boards, Minutes of Meeting (MoM) documentation, and task delegation to Spanish DevOps teams. This demonstrates direct involvement in ensuring regulatory reporting compliance. A significant contribution involved spearheading post-Brexit entity onboarding by reverse-engineering expired KYC data from legacy systems, which closed over 15 data gaps and accelerated UK-to-EU entity migrations. This showcases capability in critical data management and migration in a complex regulatory context. Also developed REGIS-TR’s first digital telephone directory, which remained in use post-tenure and reduced internal query resolution time by 65%.</p>
+                        <p class="font-semibold text-gray-800">Skills & Tools Utilized:</p>
+                        <p class="text-gray-700">Data Management & Archiving SAP S/4HANA, Microsoft Office Suite (Excel, Outlook, PowerPoint), SharePoint, Microsoft Teams, and change management tools like JIRA/Confluence.</p>
+                    </div>
+
+                    <div class="detailed-exp-item bg-gray-50 p-6 rounded-lg shadow border border-gray-200">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Role-Specific Details: Senior Relationship Manager</h3>
+                        <h4 class="text-lg font-medium text-gray-700 mb-3">Nippon India Mutual Funds, Thiruvananthapuram | Mar 2015 – Aug 2017</h4>
+                        <p class="mb-4 text-gray-700">As a Senior Relationship Manager, was entrusted with significant leadership responsibilities, overseeing all business and sales operations for the prime Thiruvananthapuram branch and managed non-prime branches, effectively acting as cluster manager. Was directly accountable for regional performance, reporting, and growth across the cluster, covering both retail and institutional channels. Built and managed relationships with regional brokers, banks, IFAs, and, after rapid promotion, HNIs and direct institutional clients, significantly expanding the branch’s client base and influence. Led pilot digital activation projects, including the rollout and adoption of the company’s proprietary digital investment platform, and managed a country-wide digital activation campaign. Also designed and executed regional marketing campaigns, roadshows, and monthly investor awareness programs to increase market share, revenue, and client engagement. Played a role in developing new IFAs and retail branches, ensuring consistent business inflow and retention of AUM despite the absence of a senior manager. Utilized market data analytics to identify fund flow trends, optimize sales strategies, and support client investment decisions. Was licensed to sell and advise on mutual funds to both distributors and direct clients, converting traditional investors to capital market products.</p>
+                        <p class="mb-4 text-gray-700">Achievements underscore impact in driving business growth and pioneering digital adoption. Achieved the MF distributor license NISM VA advisory module for distributors and institutional by passing an exam in 2015. Notably elevated Thiruvananthapuram to one of the best-performing branches nationally among non-metro city tiers, achieving top rankings in AUM growth and new business acquisition. Successfully retained and grew total AUM across the cluster, closing gaps left by the absence of a senior manager, and maintained high client satisfaction and retention rates. Expanded the regional distribution network by onboarding new IFAs and retail partners, increasing mindshare among decision-makers and boosting market penetration. Led the pilot and national rollout of the digital investment platform, achieving high digital activation rates and national recognition for innovation. Received multiple awards, including “Best B-15 RM South,” “Best Branch for IFA activation,” and “Best Equity Allocation,” for outstanding performance and leadership. Converted several large traditional portfolios to capital markets, driving significant new business and reinforcing the branch’s reputation for advisory excellence. Also conducted regulatory-mandated roadshows monthly, presenting investment ideas and classes for IFAs to enhance their skills and knowledge.</p>
+                        <p class="font-semibold text-gray-800">Skills & Tools Utilized:</p>
+                        <p class="text-gray-700">SPSS for fund flow and market trend analysis, Bloomberg (BBG) for research and client presentations, internal CRM systems for client management, sales tracking, and reporting, and multilingual client engagement (English, Hindi, Malayalam) and public speaking at roadshows and awareness programs.</p>
+                    </div>
+
+                    <div class="detailed-exp-item bg-gray-50 p-6 rounded-lg shadow border border-gray-200">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Role-Specific Details: Private Banking Relationship Manager</h3>
+                        <h4 class="text-lg font-medium text-gray-700 mb-3">Allegro Capital Advisors, Bengaluru | Jan 2011 – Nov 2012</h4>
+                        <p class="mb-4 text-gray-700">In role as a Private Banking Relationship Manager, was responsible for managing a portfolio of Non-Resident Indian (NRI) High Net Worth Individuals (HNIs), delivering bespoke investment solutions across a broad spectrum of products. These included structured products, in-house PMS, mutual funds, direct equities, corporate fixed deposits, life insurance, and select international strategies such as private equity (PE), Real Estate Investment Trusts (REITs), and electronically traded hedge funds. Conducted comprehensive financial needs analysis and tailored asset allocation strategies to optimize risk-adjusted returns and maintain high Internal Rates of Return (IRR) for client portfolios. Duties involved executing end-to-end client servicing, including subscription/redemption processes, AML/KYC completion, nominee changes, and information updates, ensuring a seamless private banking experience. Facilitated investment solutions and supported clients in accessing global markets, coordinating with legal and compliance teams for regulatory adherence and tax advice. Built strong client relationships through regular in-person meetings, proactive portfolio reviews, and high-touch engagement, which resulted in significant client retention and referral business. Also acted as a facilitator for clients’ broader financial needs, collaborating with external partners for real estate, tax, and estate planning services. Maintained full compliance with IRDA and AMFI regulations, ensuring all advisory and sales activities met industry standards.</p>
+                        <p class="mb-4 text-gray-700">Achievements in this role highlight capabilities in high-value client portfolio management and holistic financial advisory with strong compliance adherence. Acquired the IRDA license for insurance advisory to retail clients. Successfully grew and retained a high-value NRI HNI client book, consistently exceeding revenue and AUM growth targets for the private banking desk. Was recognized for high client retention rates and for acquiring new clients through referrals and cross-selling of multi-asset solutions. Enhanced operational efficiency by streamlining client onboarding and servicing processes, reducing turnaround times for key transactions. A notable achievement was maintaining full regulatory compliance with zero audit findings during tenure, reflecting strong adherence to best practices in private banking. Developed and presented customized goal-based financial plans and investment proposals, leveraging market research and client profiling to identify and recommend new investment opportunities.</p>
+                        <p class="font-semibold text-gray-800">Skills & Tools Utilized:</p>
+                        <p class="text-gray-700">Advanced asset allocation, performance monitoring, and risk management for multi-asset portfolios, CRM software for portfolio tracking, client communications, and workflow management, and a Financial Planner tool developed in MS Excel using VBA macros for client life cycle calculations, investment forecasting, gap analysis, and goal-based plans.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="projects" class="tab-content">
+                <h2 class="text-2xl font-semibold mb-4">Project Highlights: Cross-Functional Impact</h2>
+                <p class="mb-6 text-gray-700">Career is punctuated by several impactful projects that demonstrate ability to drive change, enhance efficiency, and deliver strategic outcomes across diverse functional areas. These projects underscore cross-functional expertise and tangible business impact, showcasing versatility and problem-solving capabilities.</p>
+                <div class="overflow-x-auto rounded-lg shadow-md">
+                    <table class="min-w-full bg-white border-collapse">
+                        <thead class="bg-blue-100">
+                            <tr>
+                                <th class="py-3 px-4 border-b border-gray-300 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">Project Name</th>
+                                <th class="py-3 px-4 border-b border-gray-300 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">Description</th>
+                                <th class="py-3 px-4 border-b border-gray-300 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">Role</th>
+                                <th class="py-3 px-4 border-b border-gray-300 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">Outcome/Impact</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="hover:bg-gray-50 transition-colors duration-150">
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Regional Digital Adoption & Distribution Expansion</td>
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Expand market share and digital activation across South Kerala.</td>
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Senior Relationship Manager, Nippon India Mutual Funds</td>
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Distributor initiated transaction and Reliance Invest now became a success</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 transition-colors duration-150">
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Brexit Onboarding & Legacy Data Migration</td>
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Support post-Brexit onboarding of UK entities to EU platforms.</td>
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">CRM Assistant, Internship role at REGIS-TR</td>
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Ensured seamless regulatory transition and improved data integrity for client onboarding</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 transition-colors duration-150">
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Change Control Board</td>
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Oversee and improve regulatory reporting updates for Business clients.</td>
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Business Product Management Assistant, REGIS-TR</td>
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Improved process efficiency and compliance, recognized for introducing sequential follow-up methods</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 transition-colors duration-150">
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Digital Wealth Management Platform Implementation</td>
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Deliver a compliant, user-centric digital platform for discretionary wealth management.</td>
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Project Manager, Trust Consult Group S.A, Luxembourg</td>
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Delivered the platform on time and within budget, enabling new revenue streams and supporting the company’s digital transformation strategy</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 transition-colors duration-150">
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Automated Data Quality & Reporting Solution for CSSF Filings</td>
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Enhance the accuracy, reliability, and timeliness of year-end CSSF filings and SAQ submissions by addressing fragmented and unstructured fund data.</td>
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Funds Oversight Officer</td>
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Delivered a robust hybrid (automated/manual) report that improved the reliability and timeliness of the existing data model</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 transition-colors duration-150">
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">ESG Risk Integration for Illiquid Investments</td>
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Develop and implement ESG risk process for alternative assets aligned with SFDR, EU Taxonomy, and Luxembourg CSSF expectations.</td>
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Investment Management Oversight Manager, FundRock Management Company</td>
+                                <td class="py-3 px-4 border-b border-gray-200 text-gray-800">Enhanced the company’s ESG capabilities, supporting regulatory compliance and improving investment decision-making</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="competencies" class="tab-content">
+                <h2 class="text-2xl font-semibold mb-4">Core Competencies & Technical Acumen</h2>
+                <p class="mb-6 text-gray-700">Possesses a robust set of core competencies complemented by strong technical acumen, enabling navigation of complex financial environments and driving impactful results.</p>
+
+                <h3 class="text-xl font-medium mb-2 text-gray-700">Detailed Competencies</h3>
+                <ul class="list-disc list-inside space-y-3 mb-6 text-gray-700">
+                    <li><strong>Investment & Fund Management:</strong> Expertise spans initial and ongoing due diligence on Investment Managers, Advisors, Depositaries, Central Administration, and Distribution. Proficient in assessing fund performance and attributes, ensuring investment compliance and limits. Knowledge base includes critical regulations such as CSSF 18/698, UCITS/AIFMD, CP86, EMIR, SFTR, ESG-SFDR, BMR, PR, and MiFID. Experienced with liquid asset classes and has covered areas under AIFs, particularly the onboarding of alternative advisors to Luxembourg ManCos. Skills extend to comprehensive document review, including IMAs, LPAs, SLAs, Prospectuses, PRIIPS KIIDs, and marketing materials. Additionally, adept at individual financial planning, investment advisory, asset allocation, and portfolio review.</li>
+                    <li><strong>Risk & Regulatory Compliance:</strong> Applies a risk-based approach to score delegated entities and is skilled in notifying regulatory breaches and preparing reports for CSSF/ESMA. Conducts thematic reviews on critical areas such as AML on assets, Best Execution, Liquidity, ESG, and Voting Rights. Capabilities include reviewing and improving internal compliance frameworks, with familiarity across MiFID II, BMR, PRIIPs-KIID, Prospectus Regulation, and AIFMD Annex IV reporting. Performs regulatory reporting under EMIR/SFTR and computes breach thresholds, alongside expertise in AML-KYC documentation and screening.</li>
+                    <li><strong>Client Relationship & Oversight:</strong> Manages client onboarding coordination and due diligence follow-ups, demonstrating strong organizational and interpersonal skills. Excels in cross-functional collaboration with Legal, Risk, Compliance, and Front Office teams. Experience includes managing HNI/NRI portfolios and crafting bespoke investment strategies. Also proficient in conducting roadshows and investment awareness programs, showcasing public engagement capabilities.</li>
+                    <li><strong>Project & Process Management:</strong> Has a proven track record in designing and launching digital fund selection platforms. Leads the product development lifecycle from Business Requirements Document (BRD) through prototyping to pre-production. Proficient in implementing project management tools such as JIRA, Trello, and Gantt charts. Experience includes managing cross-functional teams across legal, DevOps, and UX design functions. Has also successfully automated data quality and reporting processes for regulatory filings.</li>
+                </ul>
+
+                <h3 class="text-xl font-medium mb-2 text-gray-700">Technology & Tools Proficiency</h3>
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                    <li><strong>Data Analysis & Reporting:</strong> Advanced Microsoft Excel (PivotTables, Power Query, VBA), SQL for data querying and dashboard integrations, and Power BI for reporting visualizations.</li>
+                    <li><strong>Financial & Market Data Platforms:</strong> Bloomberg Terminal & BTCA for pricing and transaction cost analysis, Morningstar Direct, FE Analytics, Linedata, BBG SSEOMS, and MSCI ESG for fund screening, performance attribution, risk analysis, benchmarking, and ESG scoring.</li>
+                    <li><strong>Due Diligence & Fund Platforms:</strong> UME, Zeidler, and Fundvis for due diligence activities, and familiarity with PE/Real estate fund platforms such as eFront and Yardi.</li>
+                    <li><strong>Project & Collaboration Tools:</strong> SharePoint, JIRA/Confluence for project documentation and change management, Figma, and Adobe XD for UX/UI design and prototyping, Trello, Slack, and Google Workspace for project management tasks.</li>
+                    <li><strong>Enterprise Systems:</strong> Data Management & Archiving SAP S/4HANA.</li>
+                </ul>
+            </div>
+
+            <div id="education" class="tab-content">
+                <h2 class="text-2xl font-semibold mb-4">Education & Professional Development</h2>
+                <h3 class="text-xl font-medium mb-2 text-gray-700">Academic Background</h3>
+                <ul class="list-disc list-inside space-y-2 mb-6 text-gray-700">
+                    <li><strong>Masters of Science in Investment Banking, Capital Markets & Financial Technology</strong> from IÉSEG School of Management - Lille, France (2017-2019).</li>
+                    <li><strong>Bachelor degree in Commerce – Finance and Accounting</strong> from Indira Gandhi National Open University, New Delhi (2013-2016).</li>
+                    <li><strong>Integrated MBA - International Finance and Wealth management</strong> and <strong>Bachelors in Business Administration – Marketing and Finance</strong> from Indian Institute of Planning and Management – Bengaluru, India (2008-2013).</li>
+                </ul>
+
+                <h3 class="text-xl font-medium mb-2 text-gray-700">Certifications & Continuous Learning</h3>
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                    <li>C6052 Alternative Investments: PE - RE – HF – LLLC 2025</li>
+                    <li>Data Analysis - SQL, Python, SAP/BI, Database administration at CNFPC</li>
+                    <li>C6051 Managing and selling investment products from LLLC 2025</li>
+                    <li>FMVA® Financial Modeling and Valuation Analyst (CFI, 2024)</li>
+                    <li>ISO 37301 – Compliance Management Systems (2024)</li>
+                    <li>MiFID II & Investment Fund Industry in Luxembourg (2022)</li>
+                    <li>Google Project Management (2021)</li>
+                    <li>Artificial Intelligence Fundamentals by IBM skill share</li>
+                    <li>Distributed Ledger Technology for Banking and Regulation from Digital Learning hub</li>
+                </ul>
+            </div>
+
+            <div id="trajectory" class="tab-content">
+                <h2 class="text-2xl font-semibold mb-4">Strategic Career Trajectory</h2>
+                <p class="mb-6 text-gray-700">Has strategically aligned career aspirations with extensive experience, focusing on roles that leverage core competencies in regulatory compliance, project management, and client relationship management. This targeted approach maximizes impact and relevance within the financial sector.</p>
+
+                <h3 class="text-xl font-medium mb-2 text-gray-700">Target Roles & Strategic Alignment</h3>
+                <p class="mb-4 text-gray-700">Target roles are categorized into three primary areas, reflecting a deliberate focus on domains where background and expertise can yield the greatest value.</p>
+                <ul class="list-disc list-inside space-y-2 mb-6 text-gray-700">
+                    <li><strong>🛡️ Regulatory Compliance & Risk Oversight:</strong> These roles emphasize governance, oversight, and regulatory reporting. Experience in implementing governance frameworks, monitoring fund performance, and ensuring alignment with CSSF regulations makes an ideal candidate. Specific roles include Investment Oversight Manager/Associate, Delegate Oversight Analyst/Specialist, Portfolio Management Oversight Analyst, Senior Due Diligence Analyst, Regulatory Risk & Compliance Analyst (AIFMD/UCITS/EMIR), Investment Compliance Analyst/Officer, ESG Risk Analyst/ESG Due Diligence Officer, Fund Regulatory Reporting Specialist (EMIR/SFTR/MiFID), Fund Operations Oversight Officer, Fund Data Quality and Reporting Analyst, Investment Risk Reporting Analyst, and Reporting Analyst – Conducting Officer/Board Level.</li>
+                    <li><strong>🤝 Sales, Client Relations & Distribution:</strong> These roles focus on stakeholder engagement, fund marketing, and distribution oversight. Proven ability to build and manage high-value client relationships and expand distribution networks positions strongly. Specific roles include Investment Specialist/Product Specialist (Client-Facing), Private Banking Advisor/Investment Advisor (Institutional/Private Clients), Fund Distribution Oversight Officer, Client Relationship Manager – Asset Management or Fund Admin, and Institutional Sales Support/Business Development Officer.</li>
+                    <li><strong>🧩 Project Management & Business/Product Analysis:</strong> These roles center on change management, systems, and investment tools. Track record in designing and launching digital platforms and optimizing workflows makes well-suited. Specific roles include Product Analyst – Fund Platforms or Tools, Business Analyst – Asset Management/Investment Projects, Project Manager – Digital Investment Platforms, Client Solutions or Strategic Initiatives Associate, Transformation Analyst – Fund Compliance & ESG Integration, Fund Performance & Attribution Analyst, Financial Analyst – Asset Management or Real Assets, and Data Analyst – Investment Management/ESG.</li>
+                </ul>
+
+                <h3 class="text-xl font-medium mb-2 text-gray-700">Target Company Landscape</h3>
+                <p class="mb-4 text-gray-700">Based on focused areas of expertise, is targeting a diverse yet strategically aligned range of companies within the financial services ecosystem.</p>
+                <ol class="list-decimal list-inside space-y-2 text-gray-700">
+                    <li><strong>Asset Managers and Fund Management Companies:</strong> This includes UCITS Management Companies (ManCos), Alternative Investment Fund Managers (AIFMs), Super ManCos, and global asset managers, such as UBS Asset Management and Pictet Asset Management, and other major third-party players in Luxembourg and Europe.</li>
+                    <li><strong>Private Banks and Wealth Managers:</strong> Institutions offering private banking, investment advisory, and wealth management services, often with in-house compliance and distribution teams. Examples include large international banks with Luxembourg branches, such as UBS, BNP Paribas, and Pictet.</li>
+                    <li><strong>Depositary Banks and Custodians:</strong> Institutions responsible for the safekeeping and administration of fund assets, cash flow monitoring, and comprehensive oversight to ensure regulatory compliance and investor protection. Leading depositary banks and custodians in Luxembourg frequently collaborate closely with asset managers, fund administrators, and fund service providers.</li>
+                    <li><strong>Consulting Firms Specializing in Regulatory Compliance:</strong> Firms providing advisory and outsourced solutions for compliance, risk management, and regulatory reporting to financial institutions, such as KPMG, Deloitte, EY, and boutique consultancies focused on fund compliance and regulatory projects.</li>
+                    <li><strong>Real Assets and Private Equity/Real Estate Fund Managers:</strong> Firms managing private equity, real estate, and alternative investment funds, which often require specialized compliance, due diligence, and reporting expertise.</li>
+                    <li><strong>Financial Technology (FinTech) and Investment Platform Providers:</strong> Companies developing digital investment platforms, compliance tools, and data analytics solutions for asset management and distribution. Examples include FinTech firms with a focus on fund operations, digital onboarding, or regulatory technology.</li>
+                    <li><strong>Fund Administrators and Service Providers:</strong> Companies that provide fund administration, NAV oversight, regulatory reporting, and compliance support for investment funds.</li>
+                    <li><strong>Global Distributors:</strong> Organizations specializing in the cross-border marketing and distribution of investment funds, leveraging Luxembourg’s position as a leading global fund distribution hub. This includes structuring international distribution networks, navigating multi-jurisdictional regulations, and coordinating with local partners, such as leading global fund managers using Luxembourg as their distribution hub, and international consulting firms specializing in cross-border fund distribution (e.g., PwC, EY, BDO).</li>
+                </ol>
+            </div>
+
+            <div id="conclusion" class="tab-content">
+                <h2 class="text-2xl font-semibold mb-4">Conclusion</h2>
+                <p class="mb-4 text-gray-700">Career profile reveals a highly versatile and impactful financial professional, uniquely positioned at the intersection of regulatory compliance, digital innovation, and client engagement. Five years in the Luxembourg fund industry have cultivated a deep specialization in critical areas such as due diligence, delegated entity oversight, and adherence to complex EU regulations, including CSSF 18/698 and AIFMD. This expertise is not merely theoretical; it is demonstrated through a consistent track record of implementing robust governance frameworks, mitigating risks, and driving operational enhancements.</p>
+                <p class="mb-4 text-gray-700">Professional journey highlights a remarkable adaptability, transitioning from direct client and sales management in India to sophisticated project leadership and specialized regulatory oversight in Luxembourg. This progression underscores capacity to thrive in diverse market environments and assume increasing levels of responsibility. The ability to bridge various financial domains—from retail banking and mutual funds to wealth tech and fund administration—provides a holistic understanding of the financial ecosystem, enabling contributions to integrated solutions and strategic initiatives.</p>
+                <p class="mb-4 text-gray-700">Furthermore, proficiency in leveraging advanced technology and data analytics for reporting, operational efficiency, and regulatory compliance distinguishes the profile. Commitment to continuous professional development, evidenced by numerous certifications in areas like ESG, AI, and DLT, ensures skills remain at the forefront of industry demands.</p>
+                <p class="text-gray-700">In summary, is a strategic asset for organizations seeking to navigate complex regulatory landscapes, drive digital transformation, and foster strong client relationships within the global financial services sector. Blend of specialized knowledge, proven achievements, and forward-looking capabilities positions as a highly valuable candidate poised for impactful contributions in targeted roles and companies.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CV Display Page -->
+    <div id="shortCVPage" class="container hidden p-6">
+        <div class="flex flex-col sm:flex-row justify-between mb-6">
+            <button onclick="showMainProfile()" class="back-button px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition duration-300 ease-in-out mb-3 sm:mb-0 sm:mr-4">
+                ← Back to Profile
+            </button>
+            <button onclick="printCV()" class="download-button px-6 py-3 bg-gray-600 text-white font-semibold rounded-lg shadow-md hover:bg-gray-700 transition duration-300 ease-in-out">
+                Download CV as PDF
+            </button>
+        </div>
+        <h2 class="text-3xl font-bold text-center mb-6">Aswin Sanjeevaghosh's CV</h2>
+
+        <div class="cv-section mb-6 pb-4 border-b border-gray-200">
+            <h3 class="text-xl font-semibold mb-3 text-gray-800">Contact Information</h3>
+            <p class="text-gray-700">64, Rue de Bourgogne, Luxembourg city, L-1272 | +33 767789128 | <a href="mailto:aswin.sanjeeva@gmail.com" class="text-blue-600 hover:underline">aswin.sanjeeva@gmail.com</a></p>
+            <p class="text-gray-700">VISA-valid work permit in Luxembourg for all sectors and all jobs</p>
+            <p class="text-gray-700">LinkedIn: <a href="https://www.linkedin.com/in/aswinsanjeeva/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">https://www.linkedin.com/in/aswinsanjeeva/</a></p>
+        </div>
+
+        <div class="cv-section mb-6 pb-4 border-b border-gray-200">
+            <h3 class="text-xl font-semibold mb-3 text-gray-800">Professional Summary</h3>
+            <p class="text-gray-700">Experienced financial professional with over 5 years in the Luxembourg fund industry. Specialized in regulatory compliance, due diligence, and oversight of delegated investment managers in line with CSSF Circular 18/698. Strong expertise in UCITS/AIF fund industry, EMIR regulations, private assets, and ESG strategy analysis. Proven ability to monitor fund performance, identify key risks, and ensure alignment with legal and regulatory frameworks. Excellent communication skills in multicultural environments, results-driven professional passionate about innovation, collaboration, and achieving excellence.</p>
+        </div>
+
+        <div class="cv-section mb-6 pb-4 border-b border-gray-200">
+            <h3 class="text-xl font-semibold mb-3 text-gray-800">Key Skills</h3>
+            <ul class="list-disc list-inside space-y-1 text-gray-700">
+                <li>Investment Manager Due Diligence</li>
+                <li>Regulatory Compliance (CSSF, UCITS, AIF, EMIR)</li>
+                <li>Fund Performance Monitoring & Key Risk Indicators (KRIs)</li>
+                <li>ESG Strategy Analysis & Integration into Risk Frameworks</li>
+                <li>Private Assets (PE, RE, Infrastructure, Debt Valuation)</li>
+                <li>Financial Derivative Analysis (Structured Products)</li>
+                <li>Client Relationship Management</li>
+                <li>Advanced IT Skills: Microsoft Excel, Power Query, VBA, SQL, Bloomberg</li>
+            </ul>
+        </div>
+
+        <div class="cv-section mb-6 pb-4 border-b border-gray-200">
+            <h3 class="text-xl font-semibold mb-3 text-gray-800">Work Experience</h3>
+            <div class="space-y-4 text-gray-700">
+                <p><strong>Career Break (Medical Leave & Professional Development)</strong> | January 2024- present</p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>Focused on health and recovery following a medical condition.</li>
+                    <li>Enhanced skills through certifications in Financial Modeling and Valuations (CFI), Data Analysis (CNFPC), Compliance Management (DLH), and Al Fundamentals (IBM) among others.</li>
+                </ul>
+                <p><strong>Delegate Risk Oversight - Senior Associate</strong> | Waystone Management Company, Luxembourg | Aug 2023 - Dec 2023</p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>Assessed investment risk frameworks for delegated portfolio managers in alternative assets.</li>
+                    <li>Implemented pre-trade checks and ensured adherence to risk models for structured products.</li>
+                    <li>Conducted scenario analysis and stress testing for illiquid investment strategies, including private equity and real estate.</li>
+                    <li>Led initiatives on EMIR, SFTR, and MiFID II compliance, optimizing risk governance.</li>
+                </ul>
+                <p><strong>Investment Management Oversight Manager</strong> | FundRock Management Company Luxembourg | May 2022-July 2023</p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>Responsible for entity due diligence on UCITS/AIF Investment managers to ensure regulatory compliance.</li>
+                    <li>Developed sustainability risk indicators and integrated ESG factors into risk frameworks.</li>
+                    <li>Monitored fund performance and adverse impact risks, delivering detailed risk reports for senior management.</li>
+                    <li>Contributed to new fund launches by analysing investment policies and challenging proposals for illiquid assets.</li>
+                </ul>
+                <p><strong>Funds Oversight Officer</strong> | Alter Domus Alternative Fund Administration Services Luxembourg | September 2021 - February 2022</p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>Supported portfolio and compliance risk oversight for private assets, ensuring alignment with AIFMD standards.</li>
+                    <li>Consolidated regulatory reports for Conducting Officers and investment committees.</li>
+                </ul>
+                <p><strong>Project Manager</strong> | Trust Consult Group S.A Luxembourg | November 2019-September 2021</p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>Managed a wealth management web application project, ensuring compliance with strategic and regulatory requirements.</li>
+                    <li>Developed business plans and pitchbooks for discretionary wealth management initiatives.</li>
+                </ul>
+                <p><strong>Business Product Management Assistant (Internship)</strong> | REGIS-TR, Clearstream Luxembourg | November 2018 - April 2019</p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>Implemented product updates aligned with EMIR and SFTR regulations, improving change control processes.</li>
+                    <li>Supported Brexit onboarding by managing AML-KYC documentation.</li>
+                </ul>
+                <p><strong>Earlier Experience</strong></p>
+                <ul class="list-disc list-inside ml-4">
+                    <li><strong>Senior Relationship Manager, Nippon India Mutual Funds (2015-2017):</strong> Managed regional sales & distribution, increasing AUM YOY through new business and promoted new investment fund services, contributing to highest market share among other AMCs for the south cluster.</li>
+                    <li><strong>Private Banking Relationship Manager, Allegro Capital Advisors (2011-2013):</strong> Built and managed investment portfolios for high-net-worth clients, oversaw regional sales pipeline, tracked revenue growth, and produced regular sales performance reports for management.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="cv-section mb-6 pb-4 border-b border-gray-200">
+            <h3 class="text-xl font-semibold mb-3 text-gray-800">Education</h3>
+            <ul class="list-disc list-inside space-y-1 text-gray-700">
+                <li><strong>Masters of Science in Investment Banking, Capital Markets & Financial Technology</strong> | IÉSEG School of Management - Lille, France | 2017-2019</li>
+                <li><strong>Bachelor degree in Commerce - Finance and Accounting</strong> | Indira Gandhi National Open University, New Delhi | 2013-2016</li>
+                <li><strong>Integrated MBA - International Finance and Wealth management</strong> and <strong>Bachelors in Business Administration - Marketing and Finance</strong> | Indian Institute of Planning and Management - Bengaluru, India | 2008-2013</li>
+            </ul>
+        </div>
+
+        <div class="cv-section mb-6 pb-4 border-b border-gray-200">
+            <h3 class="text-xl font-semibold mb-3 text-gray-800">Certifications/Trainings</h3>
+            <ul class="list-disc list-inside space-y-1 text-gray-700">
+                <li>C6052 Alternative Investments: PE - RE - HF (C6052) - (ongoing) from LLLC (2025)</li>
+                <li>Data Analysis -SQL, Python, SAP/BI Database administration at CNFPC (2025)</li>
+                <li>C6051- Managing and selling investment products from LLLC (2025)</li>
+                <li>FMVA (Financial Modeling & Valuation Analyst) from CFI (2024)</li>
+                <li>Automation using Microsoft Copilot for daily tasks with DLH (2025)</li>
+                <li>ISO 37301-Compliance management systems from Digital Learning Hub (2024)</li>
+                <li>EU Markets in Crypto-Assets Regulation (MICA) from CSL (2024)</li>
+                <li>Distributed Ledger Technology for Banking and Regulation from Digital Learning hub (2024)</li>
+                <li>Artificial Intelligence Fundamentals by IBM skill share (2024)</li>
+                <li>Bloomberg ESG fundamentals (2023)</li>
+                <li>MiFID II & Investment Fund industry in Luxembourg from Luxembourg House of training (2022)</li>
+                <li>Google Project Management (2021)</li>
+            </ul>
+        </div>
+
+        <div class="cv-section mb-6 pb-4 border-b border-gray-200">
+            <h3 class="text-xl font-semibold mb-3 text-gray-800">IT Skills</h3>
+            <ul class="list-disc list-inside space-y-1 text-gray-700">
+                <li>MS Excel advanced</li>
+                <li>Python</li>
+                <li>SQL</li>
+                <li>Bloomberg</li>
+                <li>Morningstar</li>
+                <li>Lipper IM</li>
+                <li>SAP BI</li>
+                <li>Dashboards in Power BI</li>
+            </ul>
+        </div>
+
+        <div class="cv-section pb-4 border-b border-gray-200">
+            <h3 class="text-xl font-semibold mb-3 text-gray-800">Languages</h3>
+            <ul class="list-disc list-inside space-y-1 text-gray-700">
+                <li>English - Fluent</li>
+                <li>Hindi - Fluent</li>
+                <li>Malayalam- Native</li>
+                <li>French-B1</li>
+                <li>Luxembourgish - A2</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Function to handle tab switching
+        function openTab(tabId, clickedButton) {
+            // Get all tab content elements and hide them
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => content.classList.remove('active'));
+
+            // Get all tab buttons and remove active class
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => button.classList.remove('active'));
+
+            // Show the selected tab content
+            document.getElementById(tabId).classList.add('active');
+
+            // Add active class to the clicked button
+            clickedButton.classList.add('active');
+        }
+
+        // Functions for CV page display
+        function showShortCV() {
+            document.getElementById('mainProfile').classList.add('hidden');
+            document.getElementById('shortCVPage').classList.remove('hidden');
+        }
+
+        function showMainProfile() {
+            document.getElementById('mainProfile').classList.remove('hidden');
+            document.getElementById('shortCVPage').classList.add('hidden');
+        }
+
+        // Function to trigger printing for PDF download
+        function printCV() {
+            window.print();
+        }
+
+        // Set the first tab as active on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const firstTabButton = document.querySelector('.tab-button');
+            if (firstTabButton) {
+                firstTabButton.click(); // Simulate a click on the first button
+            }
+        });
+    </script>
+</body>
+</html>
